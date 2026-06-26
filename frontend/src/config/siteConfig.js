@@ -1,0 +1,15 @@
+export const siteConfig = {
+  siteName: import.meta.env.VITE_SITE_NAME || 'ThreadMarket',
+  tagline: import.meta.env.VITE_TAGLINE || 'Elevating local Pakistani fashion brands to global standards.',
+  whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || '+923001234567',
+  instagram: import.meta.env.VITE_INSTAGRAM_URL || 'https://instagram.com',
+  facebook: import.meta.env.VITE_FACEBOOK_URL || 'https://facebook.com',
+  tiktok: import.meta.env.VITE_TIKTOK_URL || 'https://tiktok.com',
+  youtube: import.meta.env.VITE_YOUTUBE_URL || 'https://youtube.com',
+  email: import.meta.env.VITE_CONTACT_EMAIL || 'contact@threadmarket.com',
+  phone: import.meta.env.VITE_CONTACT_PHONE || '+92 300 1234567',
+  address: import.meta.env.VITE_STORE_ADDRESS || '123 Fashion Avenue, Lahore, Pakistan',
+  currency: 'PKR',
+  currencySymbol: 'Rs.',
+  phoneRegex: /^(\+92|0)?3[0-9]{9}$/,
+};
