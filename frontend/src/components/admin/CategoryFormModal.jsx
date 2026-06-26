@@ -47,11 +47,11 @@ const CategoryFormModal = ({ isOpen, onClose, category, onSuccess }) => {
 
     try {
       if (category) {
-        await axios.put(`http://localhost:5000/api/categories/${category._id}`, submissionData, {
+        await axios.put(`${import.meta.env.VITE_API_URL}/categories/${category._id}`, submissionData, {
           withCredentials: true,
         });
       } else {
-        await axios.post('http://localhost:5000/api/categories', submissionData, {
+        await axios.post(import.meta.env.VITE_API_URL + '/categories', submissionData, {
           withCredentials: true,
         });
       }

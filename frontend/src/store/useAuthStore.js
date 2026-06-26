@@ -10,7 +10,7 @@ const useAuthStore = create(
 
       login: async (email, password) => {
         try {
-          const { data } = await axios.post('http://localhost:5000/api/auth/login', { email, password }, {
+          const { data } = await axios.post(import.meta.env.VITE_API_URL + '/auth/login', { email, password }, {
             withCredentials: true
           });
           set({ user: data, token: data.token });
@@ -22,7 +22,7 @@ const useAuthStore = create(
 
       logout: async () => {
         try {
-          await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+          await axios.post(import.meta.env.VITE_API_URL + '/auth/logout', {}, { withCredentials: true });
         } catch (error) {
           console.error('Logout error', error);
         }

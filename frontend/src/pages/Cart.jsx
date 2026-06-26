@@ -17,7 +17,7 @@ const Cart = () => {
     setLoadingPromo(true);
     setPromoError('');
     try {
-      const { data } = await axios.post('http://localhost:5000/api/promo/validate', {
+      const { data } = await axios.post(import.meta.env.VITE_API_URL + '/promo/validate', {
         code: promoInput,
         cartTotal: subtotal
       });

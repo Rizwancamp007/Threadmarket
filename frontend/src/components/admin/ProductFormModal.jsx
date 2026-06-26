@@ -27,7 +27,7 @@ const ProductFormModal = ({ isOpen, onClose, product, onSuccess }) => {
     // Fetch categories
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/categories');
+        const { data } = await axios.get(import.meta.env.VITE_API_URL + '/categories');
         setCategories(data);
       } catch (err) {
         console.error('Failed to fetch categories');
@@ -77,7 +77,7 @@ const ProductFormModal = ({ isOpen, onClose, product, onSuccess }) => {
     setUploading(true);
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, {
+      const { data } = await axios.post(import.meta.env.VITE_API_URL + '/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -110,11 +110,11 @@ const ProductFormModal = ({ isOpen, onClose, product, onSuccess }) => {
 
     try {
       if (product) {
-        await axios.put(`http://localhost:5000/api/products/${product._id}`, formattedData, {
+        await axios.put(`${import.meta.env.VITE_API_URL}/products/${product._id}`, formattedData, {
           withCredentials: true,
         });
       } else {
-        await axios.post('http://localhost:5000/api/products', formattedData, {
+        await axios.post(import.meta.env.VITE_API_URL + '/products', formattedData, {
           withCredentials: true,
         });
       }

@@ -12,7 +12,7 @@ const Categories = () => {
 
   const fetchCategories = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/categories');
+      const { data } = await axios.get(import.meta.env.VITE_API_URL + '/categories');
       setCategories(data);
     } catch (error) {
       console.error('Failed to fetch categories', error);
@@ -28,7 +28,7 @@ const Categories = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this category? (Make sure no products are using it)')) {
       try {
-        await axios.delete(`http://localhost:5000/api/categories/${id}`, { withCredentials: true });
+        await axios.delete(`${import.meta.env.VITE_API_URL}/categories/${id}`, { withCredentials: true });
         fetchCategories();
       } catch (error) {
         console.error('Error deleting category', error);

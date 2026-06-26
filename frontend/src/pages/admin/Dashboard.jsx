@@ -15,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/stats/admin', { withCredentials: true });
+        const { data } = await axios.get(import.meta.env.VITE_API_URL + '/stats/admin', { withCredentials: true });
         
         // Map icons back to stats
         const iconMap = {

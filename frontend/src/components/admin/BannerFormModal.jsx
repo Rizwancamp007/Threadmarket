@@ -45,7 +45,7 @@ const BannerFormModal = ({ isOpen, onClose, banner, onSuccess }) => {
     setUploading(true);
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, {
+      const { data } = await axios.post(import.meta.env.VITE_API_URL + '/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });
@@ -71,11 +71,11 @@ const BannerFormModal = ({ isOpen, onClose, banner, onSuccess }) => {
 
     try {
       if (banner) {
-        await axios.put(`http://localhost:5000/api/banners/${banner._id}`, submissionData, {
+        await axios.put(`${import.meta.env.VITE_API_URL}/banners/${banner._id}`, submissionData, {
           withCredentials: true,
         });
       } else {
-        await axios.post('http://localhost:5000/api/banners', submissionData, {
+        await axios.post(import.meta.env.VITE_API_URL + '/banners', submissionData, {
           withCredentials: true,
         });
       }

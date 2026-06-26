@@ -27,7 +27,7 @@ const OrderKanban = () => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('http://localhost:5000/api/orders', { withCredentials: true });
+      const { data } = await axios.get(import.meta.env.VITE_API_URL + '/orders', { withCredentials: true });
       setOrders(data);
     } catch (error) {
       console.error('Error fetching orders:', error);
@@ -62,7 +62,7 @@ const OrderKanban = () => {
     setOrders(newOrders);
 
     try {
-      await axios.put(`http://localhost:5000/api/orders/${draggableId}/status`, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/orders/${draggableId}/status`, {
         status: destination.droppableId
       }, { withCredentials: true });
       
@@ -82,7 +82,7 @@ const OrderKanban = () => {
   const markAsPaid = async (orderId) => {
     try {
       setPaying(true);
-      await axios.put(`http://localhost:5000/api/orders/${orderId}/pay`, {}, { withCredentials: true });
+      await axios.put(`${import.meta.env.VITE_API_URL}/orders/${orderId}/pay`, {}, { withCredentials: true });
       
       // Update local state
       const updatedOrders = orders.map(o => o._id === orderId ? { ...o, isPaid: true } : o);

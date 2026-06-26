@@ -13,7 +13,7 @@ const ProductList = () => {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/products/admin', { withCredentials: true });
+      const { data } = await axios.get(import.meta.env.VITE_API_URL + '/products/admin', { withCredentials: true });
       setProducts(data);
     } catch (error) {
       console.error('Failed to fetch products', error);
@@ -29,7 +29,7 @@ const ProductList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/products/${id}`, { withCredentials: true });
+        await axios.delete(`${import.meta.env.VITE_API_URL}/products/${id}`, { withCredentials: true });
         fetchProducts(); // Refresh list
       } catch (error) {
         console.error('Error deleting product', error);

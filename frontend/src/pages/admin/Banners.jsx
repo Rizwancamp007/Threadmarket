@@ -12,7 +12,7 @@ const Banners = () => {
 
   const fetchBanners = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/banners/admin', { withCredentials: true });
+      const { data } = await axios.get(import.meta.env.VITE_API_URL + '/banners/admin', { withCredentials: true });
       setBanners(data);
     } catch (error) {
       console.error('Failed to fetch banners', error);
@@ -28,7 +28,7 @@ const Banners = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this banner?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/banners/${id}`, { withCredentials: true });
+        await axios.delete(`${import.meta.env.VITE_API_URL}/banners/${id}`, { withCredentials: true });
         fetchBanners();
       } catch (error) {
         console.error('Error deleting banner', error);

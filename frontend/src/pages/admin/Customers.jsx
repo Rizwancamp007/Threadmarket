@@ -9,7 +9,7 @@ const Customers = () => {
 
   const fetchUsers = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/users', { withCredentials: true });
+      const { data } = await axios.get(import.meta.env.VITE_API_URL + '/users', { withCredentials: true });
       setUsers(data);
     } catch (error) {
       console.error('Failed to fetch users', error);
@@ -29,7 +29,7 @@ const Customers = () => {
     }
     if (window.confirm(`Are you sure you want to delete user ${email}?`)) {
       try {
-        await axios.delete(`http://localhost:5000/api/users/${id}`, { withCredentials: true });
+        await axios.delete(`${import.meta.env.VITE_API_URL}/users/${id}`, { withCredentials: true });
         fetchUsers();
       } catch (error) {
         alert(error.response?.data?.message || 'Delete failed');
@@ -45,7 +45,7 @@ const Customers = () => {
     const newRole = currentRole === 'admin' ? 'customer' : 'admin';
     if (window.confirm(`Are you sure you want to make ${email} a ${newRole}?`)) {
       try {
-        await axios.put(`http://localhost:5000/api/users/${id}/role`, { role: newRole }, { withCredentials: true });
+        await axios.put(`${import.meta.env.VITE_API_URL}/users/${id}/role`, { role: newRole }, { withCredentials: true });
         fetchUsers();
       } catch (error) {
         alert(error.response?.data?.message || 'Role update failed');

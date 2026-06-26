@@ -23,7 +23,7 @@ const ProductDetail = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`http://localhost:5000/api/products/slug/${slug}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products/slug/${slug}`);
         setProduct(data);
         if (data.sizes && data.sizes.length > 0) setSelectedSize(data.sizes[0]);
         if (data.colors && data.colors.length > 0) setSelectedColor(data.colors[0]);

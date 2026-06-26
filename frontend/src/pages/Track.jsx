@@ -16,7 +16,7 @@ const Track = () => {
     setResult(null);
     
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/track/${token}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/orders/track/${token}`);
       const data = await res.json();
       
       if (!res.ok) {

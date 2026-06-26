@@ -61,7 +61,7 @@ const Checkout = () => {
         totalPrice: totalAmount,
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/orders', orderData, {
+      const { data } = await axios.post(import.meta.env.VITE_API_URL + '/orders', orderData, {
         withCredentials: true
       });
       

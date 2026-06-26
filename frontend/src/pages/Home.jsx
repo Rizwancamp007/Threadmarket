@@ -18,9 +18,9 @@ const Home = () => {
         setLoading(true);
         // Fetch featured products, stats, and banners concurrently
         const [prodRes, statsRes, bannerRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/products?featured=true&limit=8'),
-          axios.get('http://localhost:5000/api/stats/public'),
-          axios.get('http://localhost:5000/api/banners')
+          axios.get(import.meta.env.VITE_API_URL + '/products?featured=true&limit=8'),
+          axios.get(import.meta.env.VITE_API_URL + '/stats/public'),
+          axios.get(import.meta.env.VITE_API_URL + '/banners')
         ]);
 
         setFeaturedProducts(prodRes.data.products);
@@ -49,7 +49,7 @@ const Home = () => {
             loop 
             muted 
             playsInline
-            poster="/images/hero.jpg"
+            poster="/assets/hero.jpg"
             className="w-full h-full object-cover"
           >
             {/* Real video asset from local assets */}
