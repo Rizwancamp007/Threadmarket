@@ -38,3 +38,8 @@ build/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Media (large video files — keep new ones out of the repo)
+*.mp4
+*.mov
+*.avi
